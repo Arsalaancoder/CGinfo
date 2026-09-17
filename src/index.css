@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&family=Syne:wght@700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-navy: #264653;
+  --color-brand-teal: #2A9D8F;
+  --color-brand-gold: #E9C46A;
+  --color-brand-sandy: #F4A261;
+  --color-brand-coral: #E76F51;
+  --color-brand-coral-hover: #D05A3C;
+  --color-brand-royal: #2A9D8F;
+  --color-brand-cyan: #2A9D8F;
+  --color-brand-green: #2A9D8F;
+  --color-brand-orange: #E76F51;
+  --color-brand-alt: #F0F4FF;
+  --color-brand-soft-blue: #F0F4FF;
+  --color-brand-sky: #A2D2FF;
+  --color-brand-dark: #264653;
+  --color-brand-muted: #527982;
+
+  /* Coolors Pastel Palette Tokens */
+  --color-pastel-pink: #FFD6FF;
+  --color-pastel-mauve: #E7C6FF;
+  --color-pastel-periwinkle: #C8B6FF;
+  --color-pastel-ice: #B8C0FF;
+  --color-pastel-powder: #A2D2FF;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Bricolage Grotesque', 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: #264653;
+    background-color: #F4F8FF;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #F4F8FF;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    color: #264653;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+  }
+}
+
+/* Reference Container Width Standard (1180px with generous surrounding space) */
+.ref-container {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Highlight Underline Accent matching yellow/coral text highlights */
+.highlight-pill-cyan {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.highlight-pill-cyan::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: -4px;
+  right: -4px;
+  height: 12px;
+  background-color: rgba(42, 157, 143, 0.28);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.highlight-pill-orange {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.highlight-pill-orange::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: -4px;
+  right: -4px;
+  height: 12px;
+  background-color: rgba(231, 111, 81, 0.28);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.highlight-pill-gold {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.highlight-pill-gold::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: -4px;
+  right: -4px;
+  height: 12px;
+  background-color: rgba(233, 196, 106, 0.35);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+/* Reference Card Drop Shadow */
+.ref-card-shadow {
+  box-shadow: 0 16px 36px -12px rgba(9, 44, 116, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.ref-card-shadow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ref-card-shadow-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -12px rgba(9, 44, 116, 0.12), 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Glassmorphism Mockup Card Style */
+.glass-morphism-card {
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 20px 40px -15px rgba(9, 44, 116, 0.07),
+    0 1px 3px 0 rgba(0, 0, 0, 0.02),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-morphism-card:hover {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: 
+    0 30px 60px -15px rgba(18, 62, 184, 0.15),
+    0 4px 20px 0 rgba(0, 0, 0, 0.04),
+    inset 0 2px 2px 0 rgba(255, 255, 255, 1);
+  transform: translateY(-6px);
+}
+
+.glass-morphism-pill {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+
+/* Rail Scrolling Infinite Marquee Keyframe */
+@keyframes railScroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-rail-scroll {
+  display: flex;
+  width: max-content;
+  animation: railScroll 28s linear infinite;
+}
+
+.animate-rail-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle organic grid pattern for dev image placeholders */
+.image-placeholder-dev {
+  border: 2px dashed rgba(18, 62, 184, 0.25);
+  background-color: #F7F9FC;
+}
+
+/* Micro Animations */
+@keyframes floatSlow {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes floatReverse {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
