@@ -130,7 +130,7 @@ export const ArcRainbowShowcase: React.FC<ArcRainbowShowcaseProps> = ({
   };
 
   return (
-    <div className="relative w-full max-w-[1400px] mx-auto flex flex-col items-center justify-center pt-2 pb-4 select-none">
+    <div className="relative w-full max-w-[1400px] mx-auto flex flex-col items-center justify-center pt-2 pb-4 select-none overflow-hidden">
       
       {/* Upper Arc Semicircle Deck */}
       <div className="relative w-full h-[190px] sm:h-[230px] lg:h-[260px] flex items-center justify-center">

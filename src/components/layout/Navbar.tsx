@@ -87,13 +87,14 @@ export const Navbar: React.FC = () => {
       <div className="ref-container">
         <div className="flex items-center justify-between">
           {/* Logo Area */}
-          <Link to="/" className="flex items-center gap-2 group focus:outline-hidden py-1">
+          <Link to="/" className="flex items-center gap-2 group focus:outline-hidden py-0.5">
             <img
               src="/images/site-logo.png"
               alt="C&G INFOTECH Logo"
-              className="h-14 sm:h-16 lg:h-20 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-xs"
+              className="h-10 sm:h-14 lg:h-20 w-auto object-contain group-hover:scale-105 transition-transform drop-shadow-xs"
             />
           </Link>
+
 
 
 
