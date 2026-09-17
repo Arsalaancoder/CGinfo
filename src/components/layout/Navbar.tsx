@@ -34,7 +34,9 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +54,9 @@ export const Navbar: React.FC = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
     setServicesDropdownOpen(false);
+    setMobileServicesOpen(false);
   }, [location]);
+
 
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
@@ -209,24 +213,48 @@ export const Navbar: React.FC = () => {
           <div className="lg:hidden mt-4 pt-4 pb-6 border-t border-slate-100 bg-white rounded-2xl p-4 shadow-xl space-y-3 animate-in fade-in slide-in-from-top-2">
             {navLinks.map((link) => (
               <div key={link.name}>
-                <Link
-                  to={link.path}
-                  className={`block py-2 px-3 rounded-lg text-base font-semibold ${
-                    location.pathname === link.path
-                      ? 'bg-orange-50 text-[#E76F51]'
-                      : 'text-slate-800 hover:bg-slate-50'
-                  }`}
-                >
-                  {link.name}
-                </Link>
-                {link.hasDropdown && (
-                  <div className="pl-3 mt-2 space-y-2 border-l-2 border-slate-100 ml-3">
+                {link.hasDropdown ? (
+                  <div className="flex items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                      className={`flex-1 flex items-center justify-between py-2 px-3 rounded-lg text-base font-semibold text-left transition-colors ${
+                        location.pathname.startsWith('/services')
+                          ? 'bg-orange-50 text-[#E76F51]'
+                          : 'text-slate-800 hover:bg-slate-50'
+                      }`}
+                    >
+                      <span>{link.name}</span>
+                      <ChevronDown
+                        className={`w-5 h-5 transition-transform duration-200 ${
+                          mobileServicesOpen ? 'rotate-180 text-[#E76F51]' : 'text-slate-400'
+                        }`}
+                      />
+                    </button>
+                  </div>
+                ) : (
+                  <Link
+                    to={link.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`block py-2 px-3 rounded-lg text-base font-semibold ${
+                      location.pathname === link.path
+                        ? 'bg-orange-50 text-[#E76F51]'
+                        : 'text-slate-800 hover:bg-slate-50'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )}
+
+                {link.hasDropdown && mobileServicesOpen && (
+                  <div className="pl-3 mt-2 space-y-2 border-l-2 border-slate-100 ml-3 animate-in fade-in slide-in-from-top-1 duration-200">
                     {SERVICES_DATA.slice(0, 6).map((s) => {
                       const iconSrc = SERVICE_3D_ICONS[s.id];
                       return (
                         <Link
                           key={s.id}
                           to={`/services#${s.id}`}
+                          onClick={() => setMobileMenuOpen(false)}
                           className="flex items-center gap-2.5 py-1 px-2 rounded-lg text-xs font-semibold text-slate-700 hover:text-[#E76F51] hover:bg-slate-50 transition-colors"
                         >
                           {iconSrc && (
@@ -240,7 +268,11 @@ export const Navbar: React.FC = () => {
                         </Link>
                       );
                     })}
-                    <Link to="/services" className="block py-1 pl-2 text-xs font-bold text-[#E76F51] hover:underline">
+                    <Link
+                      to="/services"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-1 pl-2 text-xs font-bold text-[#E76F51] hover:underline"
+                    >
                       + View all 9 services
                     </Link>
                   </div>
